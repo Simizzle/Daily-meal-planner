@@ -4,7 +4,7 @@ function Dropdown({selected, setSelected}) {
     const [isActive, setIsActive] = useState(false);
     const options = ['','Vegan', 'Vegitarian', 'Ketogenic', 'Lacto-Vegitarian', 'Ovo-Vegetarian', 'Pescetarian', 'Paleo', 'Primal', 'Whole30']
     return (
-        <div className="dropdown">Diet
+        <div className="dropdown"><h3>Dietary Requirements</h3>
             <div className="dropdown-btn" onClick={(e) => setIsActive(!isActive)}>
                 {selected}
         <span className="fas fa-caret-down"></span>
