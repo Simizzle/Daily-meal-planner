@@ -20,8 +20,6 @@ function Dropdown({selected, setSelected}) {
                  ))}
             </div> 
             )}
-            
-              
         </div>
     )
 }

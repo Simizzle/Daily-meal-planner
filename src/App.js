@@ -30,6 +30,7 @@ function App() {
   }
   console.log(exclude, calories, selected)
   return (
+    <div className="container">
     <div className = "App">
       <section className = "controls">
         <input
@@ -46,6 +47,7 @@ function App() {
           <button onClick={getMealData}>Get Daily Meal Plan</button>
       </section>
       {mealData && <MealList mealData={mealData} />}
+    </div>
     </div>
   )
 }
