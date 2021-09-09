@@ -12,6 +12,11 @@ body{
     height: 100vh;
 }
 
+h3{
+    text-shadow: darkgrey 10px;
+    background-color: lightgrey;
+    padding: 5px 20px;
+}
 .dropdown {
     width: 400px;
     user-select: none; 

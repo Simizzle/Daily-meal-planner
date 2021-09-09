@@ -40,7 +40,7 @@ input {
 button {
   width: 100%;
   padding: 0.5rem 1rem;
-  background-color: #7f21eb;
+  background-color: black;
   color: #f3f3f3;
   border: none;
   font-family: "Roboto", sans-serif;
@@ -50,7 +50,7 @@ button {
 }
 
 button:hover {
-  background-color: #6c13d1;
+  background-color: darkgreen;
   cursor: pointer;
   transition: 0.2s;
 }
@@ -69,6 +69,8 @@ h1 {
 .nutrients{
   box-shadow: 0 4px 8px 2px rgba(77, 77, 77, 0.15);
   background-color: #fcfcfc;
+  /* background: rgb(255,255,255);
+background: linear-gradient(315deg, rgba(255,255,255,1) 0%, rgba(21,164,6,1) 100%); */
 }
 .nutrients ul {
   display: flex;
@@ -93,6 +95,8 @@ article {
   max-width: 300px;
   box-shadow: 0 4px 8px 2px rgba(77, 77, 77, 0.15);
   background-color: #fcfcfc;
+  /* background: rgb(255,255,255);
+  background: linear-gradient(315deg, rgba(255,255,255,1) 0%, rgba(21,164,6,1) 100%); */
 }
 
 ul {
@@ -106,16 +110,18 @@ ul {
 
 a {
   text-decoration: none;
-  background-color: #7f21eb;
+  background-color: darkgreen;
   color: #f3f3f3;
   width: fit-content;
   padding: 0.5rem 1rem;
   box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+
 }
 
 a:hover {
-  background-color: #6c13d1;
+  background-color: black;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 @media only screen and (max-width: 1024px) {
