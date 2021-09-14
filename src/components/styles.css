@@ -17,6 +17,10 @@ h3{
     background-color: lightgrey;
     padding: 5px 20px;
 }
+
+.downarrow{
+    justify-content: right;
+}
 .dropdown {
     width: 400px;
     user-select: none; 

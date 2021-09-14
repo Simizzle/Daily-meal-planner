@@ -1,0 +1,7 @@
+.app {
+        display:flex;
+        align-items: center;
+        flex-direction: column;
+        background-image: url(/src/images/HealthyFood_07.svg);
+        height: 100vh;
+      }

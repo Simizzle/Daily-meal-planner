@@ -1,0 +1,12 @@
+.fc {
+    display:flex;
+    background: white;
+    height: 600px;
+    width: 80vw;
+    margin: 0;
+}
+
+.app {
+    height:100vh;
+}
+
