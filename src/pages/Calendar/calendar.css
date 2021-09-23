@@ -4,9 +4,9 @@
     height: 600px;
     width: 80vw;
     margin: 0;
+    /* padding-top: 100px; */
 }
 
 .app {
     height:100vh;
 }
-

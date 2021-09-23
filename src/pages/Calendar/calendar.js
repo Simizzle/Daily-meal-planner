@@ -1,25 +1,59 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { Button, Modal } from 'react-bootstrap/'; 
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
-
-// import "@fullcalendar/core/main.css";
-// import "@fullcalendar/daygrid/main.css";
-import './calendar.css'
-
+import interactionPlugin from "@fullcalendar/interaction";
+import './calendar.css' 
 export default function Calendar() {
-  const events = [{title: "today's event", date: new Date() }]
-    return (
-<div className="app">
+  // const events = [{title: "today's event", date: new Date() }]
+ 
+  const [show, setShow] = useState(false);
+  const [theDate, setDate] = useState("")
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  
+
+ console.log(theDate)
+return (
+ <div className="app">
 <FullCalendar
-        plugins={[ dayGridPlugin ]}
+        plugins={[ dayGridPlugin, interactionPlugin ]}
         initialView="dayGridMonth"
         headerToolbar={{
-          left: 'dayGridMonth,timeGridWeek,timeGridDay',
+          left: 'today',
           center: 'title',
-          right: 'prevYear,prev,next,nextYear'
+          right: 'prevYear,prev,next,nextYear',
         }}
+        timeZone='local'
+        selectable="true"
+        dateClick = {
+        function(info){
+         setDate(info.dateStr)}} 
       />
-</div>
-)
-}
+     <div> 
+     <button className ="modalButton" variant="primary" onClick={handleShow} >
+        Show Meals
+      </button>
+      <Modal className="modalClass" 
+            show={show} 
+            onHide={handleClose} 
+            animation="true" 
+            size="md"
+           >
+            
+        <Modal.Header>
+          <Modal.Title><h1>{theDate}</h1></Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Saved Meals Show Here</Modal.Body>
+        <Modal.Footer>
+          <Button className="modalButton" variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button className="modalButton" variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      </div>
+ </div>     
+)}
