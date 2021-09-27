@@ -7,13 +7,15 @@ import './calendar.css'
 export default function Calendar() {
   // const events = [{title: "today's event", date: new Date() }]
  
+  const today = new Date(),
+  date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
   const [show, setShow] = useState(false);
-  const [theDate, setDate] = useState("")
+  const [theDate, setDate] = useState(date)
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  
 
- console.log(theDate)
+//   console.log(date)
+//  console.log(theDate)
 return (
  <div className="app">
 <FullCalendar
@@ -42,15 +44,12 @@ return (
            >
             
         <Modal.Header>
-          <Modal.Title><h1>{theDate}</h1></Modal.Title>
+          <Modal.Title><h1>Your Saved Meals For {theDate}</h1></Modal.Title>
         </Modal.Header>
         <Modal.Body>Saved Meals Show Here</Modal.Body>
         <Modal.Footer>
-          <Button className="modalButton" variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
           <Button className="modalButton" variant="primary" onClick={handleClose}>
-            Save Changes
+            Close
           </Button>
         </Modal.Footer>
       </Modal>

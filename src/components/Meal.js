@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { useState, useEffect } from "react"
 import { Button, Modal } from 'react-bootstrap'; 
 // import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,8 +11,11 @@ export default function Meal({ meal }) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-  
-    
+    const [chooseDate, setChooseDate] = useState([])
+
+    const newDate = moment(chooseDate).format("YYYY-MM-DD")
+    console.log(newDate)
+
     useEffect(() => {
         fetch(
             `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=${process.env.REACT_APP_API_KEY}includeNutrition=false`
@@ -19,12 +23,14 @@ export default function Meal({ meal }) {
         .then(response => response.json())
         .then(data =>{ 
             setImageUrl(data.image)
-            console.log(data)
+            // console.log(data)
     })
     .catch(() => {
         console.log("error")
     })
 }, [meal.id])
+
+// console.log(data.image)
 return (
     <article>
         <h1>{meal.title}</h1>
@@ -43,26 +49,33 @@ return (
     <div className="modalClass">
       <Modal show={show} 
             onHide={handleClose}
-            dialogClassName="modal-90w">
+            >
         <Modal.Header>
           <Modal.Title><h1>{meal.title}</h1></Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <div>
+        <Modal.Body >
+        
+          <div className="datePicker">
+          <h2>Pick a Date</h2>
           <Datetime 
           dateFormat="YYYY-MM-DD"
-          open="true"
-          initialViewMode="days"
+          // open="true"
+          // initialViewMode="days"
+          strictParsing="true"
+          onChange={setChooseDate}
+          timeFormat={false}
           closeOnSelect="true"
           />
+        
           </div>
+          <img src={imageUrl} alt="recipe" width="33%" justify-content="right"/>
           </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
           <Button variant="primary" onClick={handleClose}>
-            Save Changes
+            Save To Calendar
           </Button>
         </Modal.Footer>
       </Modal>

@@ -48,6 +48,7 @@ function DailyPlanner() {
       {mealData && <MealList mealData={mealData} />}
     </div>
     </div>
+    
   )
 }
 
