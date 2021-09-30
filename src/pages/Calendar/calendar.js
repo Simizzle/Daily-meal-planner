@@ -49,7 +49,7 @@ return (
           <Modal.Title><h1>Your Saved Meals For {fullDate}</h1></Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <SavedMeals theDate={theDate}/>
+          <SavedMeals theDate={theDate} />
         </Modal.Body>
         <Modal.Footer>
           <Button className="modalButton" variant="primary" onClick={handleClose}>

@@ -15,10 +15,12 @@ export default function Meal({ meal }) {
       meal.readyInMinutes, 
       meal.servings,
       meal.sourceUrl,
+      imageUrl,
       meal.title,
       newDate); 
       setButtonText("Meal Added To Calendar");
       // setDisableButton("true");
+      console.log(imageUrl)
     }
     useEffect(() => {
         fetch(
