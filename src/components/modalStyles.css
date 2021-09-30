@@ -143,6 +143,9 @@
   .btn-primary:hover{
     background-color: darkred;
   }
+  .btn-primary:active {
+    background-color: darkred;
+  } 
   .btn {
     display: inline-block;
     margin-bottom: 0;

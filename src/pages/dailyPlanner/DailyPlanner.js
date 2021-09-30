@@ -9,6 +9,7 @@ function DailyPlanner() {
   const [selected, setSelected] = useState("")
   const [exclude, setExclude] = useState("")
 
+  
   function getMealData() {
     fetch (
       `https://api.spoonacular.com/mealplanner/generate?apiKey=${process.env.REACT_APP_API_KEY}&timeFrame=day&targetCalories=${calories}&diet=${selected}&exclude="alcohol,"${exclude}&veryHealthy=true`
@@ -28,6 +29,7 @@ function DailyPlanner() {
     setExclude(e.target.value)
   }
   console.log(exclude, calories, selected)
+  
   return (
     <div className="container">
     <div className = "DailyPlanner">

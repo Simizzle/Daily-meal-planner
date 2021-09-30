@@ -1,21 +1,25 @@
 import moment from "moment";
 import React, { useState, useEffect } from "react"
 import { Button, Modal } from 'react-bootstrap'; 
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import Datetime from 'react-datetime'
 import "react-datetime/css/react-datetime.css";
 import './modalStyles.css'
+import { addMealToCalendar } from "./utils";
 
 export default function Meal({ meal }) {
     const [imageUrl, setImageUrl] = useState("")
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const [chooseDate, setChooseDate] = useState([])
-
-    const newDate = moment(chooseDate).format("YYYY-MM-DD")
-    console.log(newDate)
-
+    function newClick() {
+      addMealToCalendar 
+      (meal.id, 
+      meal.imageType, 
+      meal.readyInMinutes, 
+      meal.servings,
+      meal.sourceUrl,
+      meal.title,
+      newDate); 
+      setButtonText("Meal Added To Calendar");
+      // setDisableButton("true");
+    }
     useEffect(() => {
         fetch(
             `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=${process.env.REACT_APP_API_KEY}includeNutrition=false`
@@ -23,14 +27,21 @@ export default function Meal({ meal }) {
         .then(response => response.json())
         .then(data =>{ 
             setImageUrl(data.image)
-            // console.log(data)
     })
     .catch(() => {
         console.log("error")
     })
 }, [meal.id])
 
-// console.log(data.image)
+const [show, setShow] = useState(false);
+const handleClose = () => setShow(false);
+const handleShow = () => setShow(true);
+const [chooseDate, setChooseDate] = useState([])
+const [buttonText, setButtonText] = useState("Save To Calendar")
+// const [disableButton, setDisableButton] = useState("false")
+const newDate = moment(chooseDate).format("YYYY-MM-DD")
+
+
 return (
     <article>
         <h1>{meal.title}</h1>
@@ -40,7 +51,7 @@ return (
             <li>Number of servings: {meal.servings}</li>
         </ul>
 
-        <a href={meal.sourceUrl} target="_blank">Go To Recipe</a>
+        <a href={meal.sourceUrl} target="_blank" rel="noreferrer">Go To Recipe</a>
         
         <Button variant="primary" onClick={handleShow}>
        Save to Calendar
@@ -59,8 +70,6 @@ return (
           <h2>Pick a Date</h2>
           <Datetime 
           dateFormat="YYYY-MM-DD"
-          // open="true"
-          // initialViewMode="days"
           strictParsing="true"
           onChange={setChooseDate}
           timeFormat={false}
@@ -74,8 +83,10 @@ return (
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save To Calendar
+          <Button variant="primary" onClick={newClick} 
+          // disabled={disableButton}
+          >
+            {buttonText}
           </Button>
         </Modal.Footer>
       </Modal>

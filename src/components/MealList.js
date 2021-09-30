@@ -3,7 +3,7 @@ import Meal from "./Meal"
 
 export default function MealList({ mealData }) {
     const nutrients = mealData.nutrients
-    
+    // console.log(mealData.meals)
     return(
         <main>
             <section className="nutrients">

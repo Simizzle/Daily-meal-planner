@@ -3,19 +3,21 @@ import { Button, Modal } from 'react-bootstrap/';
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import moment from "moment"
 import './calendar.css' 
+import SavedMeals from "../../components/SavedMeals/savedMeals";
+
 export default function Calendar() {
   // const events = [{title: "today's event", date: new Date() }]
  
   const today = new Date(),
-  date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+  date = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)) + '-' + today.getDate();
   const [show, setShow] = useState(false);
-  const [theDate, setDate] = useState(date)
+  const [theDate, setDate] = useState(date);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const fullDate = moment(theDate).format("Do MMM YYYY");
 
-//   console.log(date)
-//  console.log(theDate)
 return (
  <div className="app">
 <FullCalendar
@@ -44,9 +46,11 @@ return (
            >
             
         <Modal.Header>
-          <Modal.Title><h1>Your Saved Meals For {theDate}</h1></Modal.Title>
+          <Modal.Title><h1>Your Saved Meals For {fullDate}</h1></Modal.Title>
         </Modal.Header>
-        <Modal.Body>Saved Meals Show Here</Modal.Body>
+        <Modal.Body>
+          <SavedMeals theDate={theDate}/>
+        </Modal.Body>
         <Modal.Footer>
           <Button className="modalButton" variant="primary" onClick={handleClose}>
             Close
