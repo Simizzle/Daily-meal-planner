@@ -1,22 +1,21 @@
-import { fetchMealsToCalendar, deleteMeal } from '../utils'
+import { deleteMeal, fetchMealsToCalendar } from '../utils'
 import { useState, useEffect } from 'react'
-import { Button } from 'react-bootstrap/'
+// import { Button } from 'react-bootstrap/'
 
-export default function SavedMeals ({theDate}){
+export default function SavedMeals ({ theDate }){
     const [meal, setMeal]= useState([])
     useEffect(() => {
         fetchMealsToCalendar(theDate, setMeal)
         
         }
-    , [setMeal])
-    // console.log(meal)
-
-    // useEffect(() => {
-
-    // })
+    , [setMeal, meal])
+    
 return(
     <div>
    {meal.map((item, index)=>{
+   function clickHandler(){
+    deleteMeal(item._id);
+}
        return(
         <article key={index}>
         <h1>{item.title}</h1>
@@ -26,10 +25,9 @@ return(
             <li>Number of servings: {item.servings}</li>
         </ul>
         <a href={item.sourceUrl} target="_blank">Go To Recipe</a>
-    <Button onClick={deleteMeal(item._id, index)}>Remove Meal</Button>
+    <button onClick={()=>clickHandler(item._id)}>Remove Meal</button>
         </article>
      )})}
-    </div>
-    
+    </div> 
 )
-}
+};

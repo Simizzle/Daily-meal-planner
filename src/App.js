@@ -15,8 +15,8 @@ export default function App() {
     <Router>
       <Navbar />
         <Switch>
-          <Route path="/dailyplanner">
-            <DailyPlanner />
+          <Route path="/dailyplanner" component={DailyPlanner}>
+            {/* <DailyPlanner /> */}
           </Route>
           <Route path="/calendar">
             <Calendar />
