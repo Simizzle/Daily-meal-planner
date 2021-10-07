@@ -8,13 +8,13 @@ function Navbar () {
     <nav className="nav-bar">
       <ul>
         <li>
-          <Link className="navText" to="/">Home</Link>
-        </li>
-        <li>
           <Link className="navText" to="/dailyplanner">Quick Planner</Link>
         </li>
         <li>
-          <Link className="navText" to="/calendar">Calendar</Link>
+           <Link className="navText" to="/calendar">Calendar</Link>
+        </li>
+        <li>
+          <Link className="navText" to="/">Recipies</Link>
         </li>
       </ul>
     </nav>

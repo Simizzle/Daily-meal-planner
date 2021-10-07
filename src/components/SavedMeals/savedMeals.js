@@ -1,6 +1,5 @@
 import { deleteMeal, fetchMealsToCalendar } from '../utils'
 import { useState, useEffect } from 'react'
-// import { Button } from 'react-bootstrap/'
 
 export default function SavedMeals ({ theDate }){
     const [meal, setMeal]= useState([])
