@@ -5,8 +5,8 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import moment from "moment"
 import './calendar.css' 
-import SavedMeals from "../../components/SavedMeals/savedMeals";
-import { fetchEvents } from "../../components/utils"
+import SavedMeals from "../../SavedMeals/savedMeals";
+// import { fetchEvents } from "../../utils"
 
 export default function Calendar() {
   // const events = [{title: "today's event", date: new Date() }]
@@ -18,45 +18,45 @@ export default function Calendar() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const fullDate = moment(theDate).format("Do MMM YYYY");
-  const [meal, setMeal]= useState({targetMeal:[]})
+//   const [meal, setMeal]= useState({targetMeal:[]})
 
-  function GetEvents() {
-    useEffect(() => {
-    fetch (
-      `${process.env.REACT_APP_REST_API}meals/`
-    )
-      .then(response => response.json())
-      .then(data =>{
-        setMeal(data)
-      })
-      .catch(() => {
-        console.log("error")
-      })
-  },[])}
-  console.log(meal)
+//   function GetEvents() {
+//     useEffect(() => {
+//     fetch (
+//       `${process.env.REACT_APP_REST_API}meals/`
+//     )
+//       .then(response => response.json())
+//       .then(data =>{
+//         setMeal(data)
+//       })
+//       .catch(() => {
+//         console.log("error")
+//       })
+//   },[])}
+//   console.log(meal)
  
 
 
- const [dayColor, setDayColor] = useState()
+//  const [dayColor, setDayColor] = useState()
   
-   function setEventColor() { 
-     return(
+//    function setEventColor() { 
+//      return(
        
-    meal.targetMeal.map((item)=>
-    {
-     return(
-       [{
-    start: item.date,
-    end: item.date,
-    overlap: false,
-    display: 'background',
-    color: '#81bb29'}]
-     )}))}
+//     meal.targetMeal.map((item)=>
+//     {
+//      return(
+//        [{
+//     start: item.date,
+//     end: item.date,
+//     overlap: false,
+//     display: 'background',
+//     color: '#81bb29'}]
+//      )}))}
 
-   setDayColor(setEventColor)
+//    setDayColor(setEventColor)
 //    console.log(meal)
 //   ;
- GetEvents()
+//  GetEvents()
 return (
  <div className="app">
 <FullCalendar
@@ -69,7 +69,7 @@ return (
         }}
         timeZone='local'
         selectable="true"
-        events={dayColor}
+        // events={dayColor}
         dateClick = {
         function(info){
          setDate(info.dateStr)}} 

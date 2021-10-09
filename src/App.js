@@ -1,30 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
-import DailyPlanner from './pages/dailyPlanner/DailyPlanner'
-import Home from './pages/Home/home'
-import Calendar from './pages/Calendar/calendar'
+import styled from "styled-components";
+import DailyPlanner from './components/pages/dailyPlanner/DailyPlanner'
+import Home from './components/pages/Home/home'
+import Calendar from './components/pages/Calendar/calendar'
 import Navbar from './components/Navbar/navbar';
+import { Landing } from './components/pages/landing/landing';
 
 export default function App() {
+  const [user, setUser] = useState();
   return (
-  
-    <Router>
+    // <AppContainer>
+    <div>
+          <Router>
+      {user ? <Redirect to="/dailyplanner" /> : <Redirect to="/" />}
+      <Route exact path="/">
+        <Landing setUser={setUser} />
+      </Route>
       <Navbar />
         <Switch>
-          <Route path="/dailyplanner" component={DailyPlanner}>
-            {/* <DailyPlanner /> */}
+          <Route path="/dailyplanner">
+            <DailyPlanner user={user} />
           </Route>
           <Route path="/calendar">
-            <Calendar />
+            <Calendar user={user} />
           </Route>
-          <Route path="/">
-            <Home />
-          </Route>
+          <Route exact path="/recipies">
+        <Home user={user} />
+      </Route>
         </Switch>
     </Router>
+    </div>
+    //  </AppContainer>
   );
 }

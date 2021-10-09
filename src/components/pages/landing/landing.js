@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { LandingContainer, FormContainer, SiteLogo, LogButton, LogForm, LogInput } from "../../styledComponents";
 import { fetchUsers } from "../../utils";
-import "../../App.css";
+// import "../../App.css";
 
 export const Landing = ({ setUser }) => {
   const [newUser, setNewUser] = useState(false);
@@ -12,7 +12,9 @@ export const Landing = ({ setUser }) => {
   return (
     <LandingContainer>
       <SiteLogo>
-      <i className="fas fa-video"></i> MYMDb
+      <i 
+      // className="fas fa-video"
+      ></i> BeWellNutrition
       </SiteLogo>
       <FormContainer>
         <LogForm

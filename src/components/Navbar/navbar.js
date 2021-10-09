@@ -14,7 +14,7 @@ function Navbar () {
            <Link className="navText" to="/calendar">Calendar</Link>
         </li>
         <li>
-          <Link className="navText" to="/">Recipies</Link>
+          <Link className="navText" to="/recipies">Recipies</Link>
         </li>
       </ul>
     </nav>

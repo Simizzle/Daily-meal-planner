@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import MealList from "../../components/MealList"
+import MealList from "../../MealList"
 import './dailyplanner.css'
-import Dropdown from '../../components/Dropdown'
+import Dropdown from '../../Dropdown'
 
 function DailyPlanner() {
   const [mealData, setMealData] = useState(null);
