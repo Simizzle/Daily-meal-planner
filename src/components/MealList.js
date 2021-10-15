@@ -1,7 +1,7 @@
 import React from "react"
 import Meal from "./Meal"
 
-export default function MealList({ mealData }) {
+export default function MealList({ mealData, user }) {
     const nutrients = mealData.nutrients
     // console.log(mealData)
     return(
@@ -18,7 +18,7 @@ export default function MealList({ mealData }) {
 
             <section className="meals">
                 {mealData.meals.map(meal => {
-                    return <Meal key={meal.id} meal={meal} />
+                    return <Meal key={meal.id} meal={meal} user={user}/>
                 })}
             </section>
         </main>

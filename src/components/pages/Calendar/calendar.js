@@ -8,7 +8,7 @@ import './calendar.css'
 import SavedMeals from "../../SavedMeals/savedMeals";
 // import { fetchEvents } from "../../utils"
 
-export default function Calendar() {
+export default function Calendar({user}) {
   // const events = [{title: "today's event", date: new Date() }]
  
   const today = new Date(),
@@ -18,6 +18,7 @@ export default function Calendar() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const fullDate = moment(theDate).format("Do MMM YYYY");
+  // console.log(user)
 //   const [meal, setMeal]= useState({targetMeal:[]})
 
 //   function GetEvents() {
@@ -89,7 +90,7 @@ return (
           <Modal.Title><h1>Your Saved Meals For {fullDate}</h1></Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <SavedMeals theDate={theDate} />
+          <SavedMeals theDate={theDate} user={user}/>
         </Modal.Body>
         <Modal.Footer>
           <Button className="modalButton" variant="primary" onClick={handleClose}>

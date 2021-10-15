@@ -6,8 +6,11 @@ import "react-datetime/css/react-datetime.css";
 import './modalStyles.css'
 import { addMealToCalendar } from "./utils";
 
-export default function Meal({ meal }) {
-    const [imageUrl, setImageUrl] = useState("")
+export default function Meal({ meal, user }) {
+  console.log(user)
+    const [imageUrl, setImageUrl] = useState("");
+    const favourite = "false";
+
     function newClick() {
       addMealToCalendar 
       (meal.id, 
@@ -17,10 +20,12 @@ export default function Meal({ meal }) {
       meal.sourceUrl,
       imageUrl,
       meal.title,
-      newDate); 
+      newDate,
+      user,
+      favourite,); 
       setButtonText("Meal Added To Calendar");
       setDisableButton(true);
-      console.log(imageUrl)
+      // console.log(imageUrl)
     }
     useEffect(() => {
         fetch(

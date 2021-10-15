@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { LandingContainer, FormContainer, SiteLogo, LogButton, LogForm, LogInput } from "../../styledComponents";
 import { fetchUsers } from "../../utils";
-// import "../../App.css";
-
-export const Landing = ({ setUser }) => {
+import { Redirect } from "react-router-dom";
+import './landing.css'
+export const Landing = ({ user, setUser }) => {
   const [newUser, setNewUser] = useState(false);
   const [email, setEmail] = useState();
   const [userName, setUserName] = useState();
   const [pass, setPass] = useState();
 
   return (
+    <div className="landingContainer">
     <LandingContainer>
       <SiteLogo>
       <i 
-      // className="fas fa-video"
       ></i> BeWellNutrition
       </SiteLogo>
       <FormContainer>
@@ -40,8 +40,11 @@ export const Landing = ({ setUser }) => {
         >
           {newUser ? "Log In" : "Sign Up"}
         </LogButton>
+        {user && <Redirect to="/dailyplanner" />}
         </LogForm>
       </FormContainer>
     </LandingContainer>
+    </div>
   );
+
 };

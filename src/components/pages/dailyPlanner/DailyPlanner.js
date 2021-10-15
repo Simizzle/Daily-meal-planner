@@ -3,12 +3,11 @@ import MealList from "../../MealList"
 import './dailyplanner.css'
 import Dropdown from '../../Dropdown'
 
-function DailyPlanner() {
+function DailyPlanner({user}) {
   const [mealData, setMealData] = useState(null);
   const [calories, setCalories] = useState(2000);
   const [selected, setSelected] = useState("")
   const [exclude, setExclude] = useState("")
-
   
   function getMealData() {
     fetch (
@@ -47,7 +46,7 @@ function DailyPlanner() {
           <Dropdown selected={selected} setSelected={setSelected} />
           <button onClick={getMealData}>Get Daily Meal Plan</button>
       </section>
-      {mealData && <MealList mealData={mealData} />}
+      {mealData && <MealList mealData={mealData} user={user}/>}
     </div>
     </div>
     

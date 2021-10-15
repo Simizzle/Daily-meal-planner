@@ -1,8 +1,15 @@
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, Redirect } from 'react-router-dom'
 import './navbar.css'
 
-function Navbar () {
 
+export const Navbar = ({
+   setUser 
+  }) => {
+  const logOutHandler = (e) =>{
+    e.preventDefault();
+   setUser ();
+  }
     return (
     <div>
     <nav className="nav-bar">
@@ -16,10 +23,11 @@ function Navbar () {
         <li>
           <Link className="navText" to="/recipies">Recipies</Link>
         </li>
+        <li>
+          <Link className="navText" onClick={(e) =>logOutHandler(e)} to="/">Logout</Link>
+          </li>
       </ul>
     </nav>
     </div>
     )
-}
-
-export default Navbar
+};

@@ -6,7 +6,9 @@ export const addMealToCalendar = async (
   sourceUrl,
   imageUrl,
   title,
-  date
+  date,
+  user,
+  favourite,
 ) => {
   await fetch(`${process.env.REACT_APP_REST_API}meals`, {
     method: "POST",
@@ -20,13 +22,23 @@ export const addMealToCalendar = async (
       imageUrl: imageUrl,
       title: title,
       date: date,
+      user: user,
+      favourite: favourite,
     }),
   });
 };
 
-export const fetchMealsToCalendar = async (date, setMeal) => {
+export const fetchMealsToCalendar = async (date, setMeal, user) => {
   const response = await fetch(
-    `${process.env.REACT_APP_REST_API}meals/${date}`
+    `${process.env.REACT_APP_REST_API}meals/${date}&${user}`
+  );
+  const data = await response.json();
+  setMeal(data.targetMeal);
+};
+
+export const fetchMealsToTable = async (setMeal, user) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_REST_API}meals/${user}`
   );
   const data = await response.json();
   setMeal(data.targetMeal);
@@ -40,6 +52,20 @@ export const fetchMealsToCalendar = async (date, setMeal) => {
 //   setEvent(data.targetMeal);
 // };
 
+export const editFavouriteMeal = async (favourite, itemId) => {
+  // preventDefault();
+  try {
+    await fetch(`${process.env.REACT_APP_REST_API}meals/${itemId}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        favourite: favourite,
+      }),
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 export const deleteMeal = async (_id) => {
     await fetch(`${process.env.REACT_APP_REST_API}meals/${_id}`, {
       method: "DELETE",

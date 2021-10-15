@@ -39,6 +39,7 @@ export const PageContainer = styled.div`
 export const LandingContainer = styled.div`
   font-family: sans-serif;
   background-color: var(--primary);
+  background-image: url(/src/images/HealthyFood_07.svg);
   color: var(--white);
   width: 100vw;
   height: 100vh;
@@ -52,11 +53,13 @@ export const SiteLogo = styled.div`
   font-weight: 700;
   font-size: 50px;
   margin: 10px;
+  
 `;
 
 export const FormContainer = styled.div`
   width: 350px;
-  background-color: var(--white);
+  /* background-color: var(--white); */
+  background-color: white;
   border-radius: 5px;
   padding: 10px;
   display: flex;

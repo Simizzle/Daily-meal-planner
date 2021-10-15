@@ -135,7 +135,25 @@ a:hover {
   cursor: pointer;
   transition: 0.2s;
 }
-
+.recipie-img {
+  display: flex;
+}
+.favourite-btn {
+  display: flex;
+  z-index: 2;
+  color: #e73c20;
+  position: absolute;
+  padding: 5px 5px;
+  cursor: pointer;
+}
+.favourite-btn-active{
+  display: flex;
+  z-index: 2;
+  color: #e73c20;
+  position: absolute;
+  padding: 5px 5px;
+  cursor: pointer;
+}
 @media only screen and (max-width: 1024px) {
   .meals {
     flex-direction: column;

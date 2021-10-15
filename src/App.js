@@ -5,15 +5,16 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import styled from "styled-components";
 import DailyPlanner from './components/pages/dailyPlanner/DailyPlanner'
-import Home from './components/pages/Home/home'
+import Recipies from './components/pages/recipies/recipies'
 import Calendar from './components/pages/Calendar/calendar'
-import Navbar from './components/Navbar/navbar';
+import { Navbar } from './components/Navbar/navbar';
 import { Landing } from './components/pages/landing/landing';
+
 
 export default function App() {
   const [user, setUser] = useState();
+  console.log(user)
   return (
     // <AppContainer>
     <div>
@@ -22,16 +23,18 @@ export default function App() {
       <Route exact path="/">
         <Landing setUser={setUser} />
       </Route>
-      <Navbar />
         <Switch>
           <Route path="/dailyplanner">
+          <Navbar setUser={setUser}/>
             <DailyPlanner user={user} />
           </Route>
           <Route path="/calendar">
+          <Navbar setUser={setUser}/>
             <Calendar user={user} />
           </Route>
           <Route exact path="/recipies">
-        <Home user={user} />
+          <Navbar setUser={setUser}/>
+        <Recipies user={user} />
       </Route>
         </Switch>
     </Router>
