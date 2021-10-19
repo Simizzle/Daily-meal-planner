@@ -21,7 +21,7 @@ export const Navbar = ({
            <Link className="navText" to="/calendar">Calendar</Link>
         </li>
         <li>
-          <Link className="navText" to="/recipies">Recipies</Link>
+          <Link className="navText" to="/recipies">Recipes</Link>
         </li>
         <li>
           <Link className="navText" onClick={(e) =>logOutHandler(e)} to="/">Logout</Link>

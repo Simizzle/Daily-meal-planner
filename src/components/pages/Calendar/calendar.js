@@ -6,7 +6,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import moment from "moment"
 import './calendar.css' 
 import SavedMeals from "../../SavedMeals/savedMeals";
-// import { fetchEvents } from "../../utils"
+import { fetchMealsToTable } from "../../utils"
 
 export default function Calendar({user}) {
   // const events = [{title: "today's event", date: new Date() }]
@@ -18,46 +18,31 @@ export default function Calendar({user}) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const fullDate = moment(theDate).format("Do MMM YYYY");
-  // console.log(user)
-//   const [meal, setMeal]= useState({targetMeal:[]})
 
-//   function GetEvents() {
-//     useEffect(() => {
-//     fetch (
-//       `${process.env.REACT_APP_REST_API}meals/`
-//     )
-//       .then(response => response.json())
-//       .then(data =>{
-//         setMeal(data)
-//       })
-//       .catch(() => {
-//         console.log("error")
-//       })
-//   },[])}
-//   console.log(meal)
- 
-
-
-//  const [dayColor, setDayColor] = useState()
-  
-//    function setEventColor() { 
-//      return(
-       
-//     meal.targetMeal.map((item)=>
-//     {
-//      return(
-//        [{
-//     start: item.date,
-//     end: item.date,
-//     overlap: false,
-//     display: 'background',
-//     color: '#81bb29'}]
-//      )}))}
-
-//    setDayColor(setEventColor)
-//    console.log(meal)
-//   ;
-//  GetEvents()
+  const [meal, setMeal]= useState([])
+  useEffect(() => {
+      fetchMealsToTable(setMeal, user)
+      }
+  , [setShow])
+ let datez = []
+ function setEventColor() { 
+    return(
+    meal.map((item)=>
+    {
+      datez.push({
+        start: item.date,
+        end: item.date,
+        overlap: false,
+        display: 'background',
+        color: '#81bb29'
+      })
+    }
+    )
+    )
+  }
+   setEventColor()
+   
+   
 return (
  <div className="app">
 <FullCalendar
@@ -70,7 +55,7 @@ return (
         }}
         timeZone='local'
         selectable="true"
-        // events={dayColor}
+        events={datez}
         dateClick = {
         function(info){
          setDate(info.dateStr)}} 
