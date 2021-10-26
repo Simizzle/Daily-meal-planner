@@ -10,7 +10,6 @@ import Recipies from './components/pages/recipies/recipies'
 import Calendar from './components/pages/Calendar/calendar'
 import { Navbar } from './components/Navbar/navbar';
 import { Landing } from './components/pages/landing/landing';
-import * as ReactBootstrap  from 'react-bootstrap'
 
 
 export default function App() {

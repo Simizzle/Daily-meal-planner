@@ -18,7 +18,12 @@ export default function Calendar({user}) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const fullDate = moment(theDate).format("Do MMM YYYY");
+  const [refresh, setRefresh] = useState()
 
+  function clickHandler(){
+   handleClose()
+    setRefresh(!refresh)
+  }
   const modalStyle = {
     position: 'relative',
     display: 'flex',
@@ -28,7 +33,8 @@ export default function Calendar({user}) {
   useEffect(() => {
       fetchMealsToTable(setMeal, user)
       }
-  , [setShow])
+  , [setShow, refresh])
+  
  let datez = []
  function setEventColor() { 
     return(
@@ -71,7 +77,7 @@ return (
       </button>
       <Modal  
             show={show} 
-            onHide={handleClose} 
+            onHide={clickHandler} 
             animation="true" 
             size="md"
            >
@@ -83,7 +89,7 @@ return (
           <SavedMeals theDate={theDate} user={user}/>
         </Modal.Body>
         <Modal.Footer>
-          <Button className="modalButton" variant="primary" onClick={handleClose}>
+          <Button className="modalButton" variant="primary" onClick={clickHandler}>
             Close
           </Button>
         </Modal.Footer>

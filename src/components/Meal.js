@@ -24,7 +24,7 @@ export default function Meal({ meal, user }) {
       user,
       favourite,); 
       setButtonText("Meal Added To Calendar");
-      setDisableButton(true);
+      // setDisableButton(true);
       // console.log(imageUrl)
     }
     useEffect(() => {
@@ -45,7 +45,6 @@ const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);
 const [chooseDate, setChooseDate] = useState([])
 const [buttonText, setButtonText] = useState("Save To Calendar")
-const [disableButton, setDisableButton] = useState(false)
 const newDate = moment(chooseDate).format("YYYY-MM-DD")
 
 
@@ -91,7 +90,6 @@ return (
             Close
           </Button>
           <Button variant="primary" onClick={()=>newClick()} 
-          // disabled={disableButton}
           >
             {buttonText}
           </Button>
