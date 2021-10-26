@@ -10,7 +10,7 @@ export default function SavedMeals ({ theDate, user }){
         }
     , [setMeal, meal])
 return(
-    <div>
+    <div className="article">
    {meal.map((item, index)=>{
    function clickHandler(){
     deleteMeal(item._id);
@@ -27,7 +27,7 @@ return(
             <li>Number of servings: {item.servings}</li>
         </ul>
         <a href={item.sourceUrl} target="_blank">Go To Recipe</a>
-    <button onClick={()=>clickHandler(item._id)}>Remove Meal</button>
+    <button className="btn-primary" onClick={()=>clickHandler(item._id)}>Remove Meal</button>
         </article>
      )})}
     </div> 

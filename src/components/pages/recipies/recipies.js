@@ -5,21 +5,22 @@ import { Table } from 'react-bootstrap'
 import {fetchMealsToTable, deleteMeal} from '../../utils'
 import ToggleFavourite from "../../FavBtn/FavBtn"
 
-
 function Recipies ({user}){
 
   const [meal, setMeal]= useState([])
+  const [refresh, setRefresh] = useState()
   useEffect(() => {
       fetchMealsToTable(setMeal, user)
       }
-  , [setMeal, meal])
+  , [setMeal, refresh])
 console.log(meal)
 
   return(
-    <Table striped bordered hover size="sm" variant="dark">
+    
+    <Table responsive="lg" striped bordered hover size="sm" variant="dark" >
     <thead>
       <tr>
-        <th>Recipe Name</th>
+        <th filterControl="true">Recipe Name</th>
         <th>Image</th>
         <th>Date</th>
         <th>Servings</th>
@@ -33,7 +34,9 @@ console.log(meal)
     {meal.map((item)=>{
       function clickHandler(){
         deleteMeal(item._id)
+        setRefresh(!refresh)
       window.alert("Meal removed")};
+ 
         return(
       <tr>
         <td>{item.title}</td>
@@ -43,12 +46,12 @@ console.log(meal)
         <td>{item.readyInMinutes} mins</td>
         <td><a href={item.sourceUrl} target="_blank">Go To Recipe</a></td>
         <td><ToggleFavourite itemFavourite={item.favourite} itemId={item._id} /></td>
-        <td><button onClick={()=>clickHandler(item._id)}>Remove Meal</button></td>
+        <td><button className="btn-primary" onClick={()=>clickHandler(item._id)}>Remove Meal</button></td>
       </tr>
 // }
     )})}
     </tbody>
-    
+   
   </Table>
   )}
 

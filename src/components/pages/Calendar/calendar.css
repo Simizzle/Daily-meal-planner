@@ -10,3 +10,15 @@
 .app {
     height:100vh;
 }
+
+.calendar.modalClass {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    height: 100%;
+    background-color: rgba(129, 187, 41, 0.5);
+    /* display: flex;
+    height:inherit; */
+    /* overflow-y:auto !important; */
+  }

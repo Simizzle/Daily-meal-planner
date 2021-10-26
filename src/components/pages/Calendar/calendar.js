@@ -19,6 +19,11 @@ export default function Calendar({user}) {
   const handleShow = () => setShow(true);
   const fullDate = moment(theDate).format("Do MMM YYYY");
 
+  const modalStyle = {
+    position: 'relative',
+    display: 'flex',
+    justifyContent: "center"
+  }
   const [meal, setMeal]= useState([])
   useEffect(() => {
       fetchMealsToTable(setMeal, user)
@@ -64,7 +69,7 @@ return (
      <button className ="modalButton" variant="primary" onClick={handleShow} >
         Show Meals
       </button>
-      <Modal className="modalClass" 
+      <Modal  
             show={show} 
             onHide={handleClose} 
             animation="true" 
@@ -74,7 +79,7 @@ return (
         <Modal.Header>
           <Modal.Title><h1>Your Saved Meals For {fullDate}</h1></Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body style={modalStyle}>
           <SavedMeals theDate={theDate} user={user}/>
         </Modal.Body>
         <Modal.Footer>

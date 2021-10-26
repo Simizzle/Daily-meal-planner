@@ -50,6 +50,7 @@
   }
   .modal-content {
     position: relative;
+    align-items: center;
     background-color: #ffffff;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
@@ -90,8 +91,11 @@
   }
   .modal-body {
     position: relative;
+    /* display: flex; */
+    justify-content: center;
     padding: 15px;
     height: 100%;
+    background-color: rgba(129, 187, 41, 0.5);
     /* display: flex;
     height:inherit; */
     /* overflow-y:auto !important; */
