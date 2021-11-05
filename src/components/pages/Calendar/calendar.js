@@ -9,7 +9,6 @@ import SavedMeals from "../../SavedMeals/savedMeals";
 import { fetchMealsToTable } from "../../utils"
 
 export default function Calendar({user}) {
-  // const events = [{title: "today's event", date: new Date() }]
  
   const today = new Date(),
   date = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)) + '-' + today.getDate();

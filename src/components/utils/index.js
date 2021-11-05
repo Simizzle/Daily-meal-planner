@@ -44,13 +44,6 @@ export const fetchMealsToTable = async (setMeal, user) => {
   setMeal(data.targetMeal);
 };
 
-// export const fetchEvents = async (setEvent) => {
-//   const response = await fetch(
-//     `${process.env.REACT_APP_REST_API}meals/`
-//   );
-//   const data = await response.json();
-//   setEvent(data.targetMeal);
-// };
 
 export const editFavouriteMeal = async (favourite, itemId) => {
   // preventDefault();
@@ -87,20 +80,42 @@ export const deleteMeal = async (_id) => {
           body: JSON.stringify({
             email: email,
             username: username,
-            password: pass,
-          }),
-        });
+            password: pass
+          })
+        })
       } else {
         response = await fetch(
-          `${process.env.REACT_APP_REST_API}users/${username}`
-        );
+          `${process.env.REACT_APP_REST_API}users/${username}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              password: pass
+            })
+          });
       }
       const data = await response.json();
+      localStorage.setItem('MyToken', data.token);
+      console.log(data)
       setUser(data.user.username);
     } catch (error) {
       console.log(error);
     }
   };
+
+  export const authUser = async (setUser) => {
+    if (localStorage.MyToken) {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_REST_API}users`, {
+          method: 'GET',
+          headers: {"Authorization": `Bearer ${localStorage.getItem("MyToken")}`}
+        })
+          const data = await response.json();
+          setUser(data.user.username)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
   
   // export const editUsername = async (e, oldUsername, newUsername) => {
   //   e.preventDefault();

@@ -8,6 +8,7 @@ export const Navbar = ({
   }) => {
   const logOutHandler = (e) =>{
     e.preventDefault();
+    localStorage.removeItem('MyToken');
    setUser ();
   }
     return (

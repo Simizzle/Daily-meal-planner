@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,10 +10,16 @@ import Recipies from './components/pages/recipies/recipies'
 import Calendar from './components/pages/Calendar/calendar'
 import { Navbar } from './components/Navbar/navbar';
 import { Landing } from './components/pages/landing/landing';
+import { authUser } from './components/utils';
 
 
 export default function App() {
   const [user, setUser] = useState();
+
+  useEffect(() => {
+    authUser(setUser)
+  }, [user])
+  
   console.log(user)
   return (
     // <AppContainer>
